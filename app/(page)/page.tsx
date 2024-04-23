@@ -1,7 +1,9 @@
+import RideRecords from '@/components/RideRecords'
+
 const HomePage = () => {
   return (
     <div>
-      <h1>Home Page</h1>
+      <RideRecords/>
     </div>
   );
 };
