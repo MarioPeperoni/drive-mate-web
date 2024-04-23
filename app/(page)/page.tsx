@@ -1,9 +1,9 @@
-import RideRecords from '@/components/RideRecords'
+import RideRecordsList from '@/components/ride-records/RideRecordsList';
 
 const HomePage = () => {
   return (
     <div>
-      <RideRecords/>
+      <RideRecordsList />
     </div>
   );
 };
