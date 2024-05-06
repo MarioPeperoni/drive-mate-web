@@ -5,9 +5,11 @@ type Ride = {
   userId: number;
   driver: User;
   passengers: Passenger[];
-  rideDate: Date;
+  startDate: Date;
+  endDate: Date;
   price: number;
   seats: number;
+  car: string;
   createdAt: Date;
   updatedAt: Date;
 };
