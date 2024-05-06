@@ -1,11 +1,11 @@
-'use client';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+"use client";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import { ClerkLoaded, ClerkLoading } from '@clerk/nextjs';
-import { useClerk, useUser } from '@clerk/clerk-react';
+import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
+import { useClerk, useUser } from "@clerk/clerk-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,10 +13,10 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Skeleton } from '@/components/ui/skeleton';
+} from "@/components/ui/dropdown-menu";
+import { Skeleton } from "@/components/ui/skeleton";
 
-import { FaChevronDown } from 'react-icons/fa';
+import { FaChevronDown } from "react-icons/fa";
 
 /**
  * Profile button component used in header.
@@ -32,7 +32,7 @@ const ProfileButton = () => {
   return user ? (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-2">
-        <Avatar className="w-[30px] h-[30px]">
+        <Avatar className="h-[30px] w-[30px]">
           <AvatarImage src={user?.imageUrl} />
           <AvatarFallback>
             {user.firstName![-1]}
@@ -49,10 +49,10 @@ const ProfileButton = () => {
         <DropdownMenuSeparator />
         <DropdownMenuItem>Profile</DropdownMenuItem>
         <DropdownMenuItem asChild className="hover:cursor-pointer">
-          <Link href={'/settings'}>Settings</Link>
+          <Link href={"/settings"}>Settings</Link>
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => signOut(() => router.push('/'))}
+          onClick={() => signOut(() => router.push("/"))}
           className="hover:cursor-pointer"
         >
           Sign Out
@@ -63,13 +63,13 @@ const ProfileButton = () => {
     <>
       <ClerkLoading>
         <div className="flex items-center justify-center gap-2">
-          <Skeleton className="w-[30px] h-[30px] rounded-full" />
-          <Skeleton className="w-[135px] h-[20px] rounded-full" />
+          <Skeleton className="h-[30px] w-[30px] rounded-full" />
+          <Skeleton className="h-[20px] w-[135px] rounded-full" />
         </div>
       </ClerkLoading>
       <ClerkLoaded>
-        <Link href={'/auth/login'} className="flex items-center gap-2">
-          <Avatar className="w-[30px] h-[30px]">
+        <Link href={"/auth/login"} className="flex items-center gap-2">
+          <Avatar className="h-[30px] w-[30px]">
             <AvatarImage src="avatar.webp" />
           </Avatar>
           <p className="text-sm font-semibold">Sign in</p>

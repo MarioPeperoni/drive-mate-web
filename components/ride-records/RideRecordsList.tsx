@@ -1,9 +1,11 @@
-import axios from 'axios';
+import axios from "axios";
 
-import RideRecordCard from '@/components/ride-records/RideRecordCard';
+import RideRecordCard from "@/components/ride-records/RideRecordCard";
 
 async function getRides() {
-  const response = await axios.get('http://localhost:5103/api/rides').then((res) => res.data);
+  const response = await axios
+    .get("http://localhost:5103/api/rides")
+    .then((res) => res.data);
   return response as Ride[];
 }
 

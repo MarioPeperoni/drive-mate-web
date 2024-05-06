@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { format } from 'date-fns';
+import Image from "next/image";
+import { format } from "date-fns";
 
-import { Card, CardTitle, CardContent } from '@/components/ui/card';
+import { Card, CardTitle, CardContent } from "@/components/ui/card";
 
-import { HiArrowRight } from 'react-icons/hi';
-import { FaLocationPinLock } from 'react-icons/fa6';
+import { HiArrowRight } from "react-icons/hi";
+import { FaLocationPinLock } from "react-icons/fa6";
 
 interface RideRecordCardProps {
   ride: Ride;
@@ -14,37 +14,37 @@ interface RideRecordCardProps {
 
 const RideRecordCard = ({ ride }: RideRecordCardProps) => {
   const handleCardClick = () => {
-    console.log('Card clicked');
+    console.log("Card clicked");
   };
 
   return (
     <Card
       className={
-        'sm:w-[80%] w-[95%] mx-auto my-auto hover:shadow-lg transition hover:cursor-pointer'
+        "mx-auto my-auto w-[95%] transition hover:cursor-pointer hover:shadow-lg sm:w-[80%]"
       }
       onClick={handleCardClick}
     >
-      <CardContent className="pb-4 justify-between p-4 flex flex-col sm:flex-row">
+      <CardContent className="flex flex-col justify-between p-4 pb-4 sm:flex-row">
         <div>
-          <CardTitle className="flex space-x-4 items-center">
-            <div className="flex gap-1 text-xl font-semibold items-center">
+          <CardTitle className="flex items-center space-x-4">
+            <div className="flex items-center gap-1 text-xl font-semibold">
               <span>{ride.from}</span>
-              <HiArrowRight className="w-5 h-5" />
+              <HiArrowRight className="h-5 w-5" />
               <span>{ride.to}</span>
             </div>
-            <div className="text-sm flex gap-1 font-bold items-center text-muted-foreground">
-              <span>{format(new Date(ride.startDate), 'HH:mm')}</span>
-              <HiArrowRight className=" w-4 h-4" />
-              <span>{format(new Date(ride.endDate), 'HH:mm')}</span>
+            <div className="flex items-center gap-1 text-sm font-bold text-muted-foreground">
+              <span>{format(new Date(ride.startDate), "HH:mm")}</span>
+              <HiArrowRight className=" h-4 w-4" />
+              <span>{format(new Date(ride.endDate), "HH:mm")}</span>
             </div>
           </CardTitle>
-          <h2 className="text-muted-foreground font-medium">
-            {format(new Date(ride.startDate), 'PPPP')}
+          <h2 className="font-medium text-muted-foreground">
+            {format(new Date(ride.startDate), "PPPP")}
           </h2>
-          <div className="flex space-x-2 !mt-3 items-center">
+          <div className="!mt-3 flex items-center space-x-2">
             <Image
               src={ride.driver.imageUrl}
-              className="rounded-full w-9 h-9"
+              className="h-9 w-9 rounded-full"
               alt="User Avatar"
               width={35}
               height={35}
@@ -52,13 +52,13 @@ const RideRecordCard = ({ ride }: RideRecordCardProps) => {
             <span className="flex font-bold">{ride.driver.firstName}</span>
           </div>
         </div>
-        <div className="flex text-lg sm:flex-col gap-3 sm:gap-0 mt-2 sm:mt-0">
-          <div className="flex space-x-2 items-center justify-end">
+        <div className="mt-2 flex gap-3 text-lg sm:mt-0 sm:flex-col sm:gap-0">
+          <div className="flex items-center justify-end space-x-2">
             <span className="font-bold">{ride.price} zł</span>
             <span className="text-muted-foreground">per seat</span>
           </div>
-          <div className="flex space-x-2 items-center justify-end">
-            <FaLocationPinLock className="w-4 h-4" />
+          <div className="flex items-center justify-end space-x-2">
+            <FaLocationPinLock className="h-4 w-4" />
             <div>
               <span className="font-bold">
                 {ride.seats - (ride.passengers ? ride.passengers.length : 0)}

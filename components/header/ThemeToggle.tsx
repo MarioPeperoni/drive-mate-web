@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import { useTheme } from 'next-themes';
+import { useTheme } from "next-themes";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 
-import { LuMoonStar } from 'react-icons/lu';
-import { FaSun } from 'react-icons/fa';
+import { LuMoonStar } from "react-icons/lu";
+import { FaSun } from "react-icons/fa";
 
 const ThemeToggle = () => {
   const { setTheme, theme } = useTheme();
 
   return (
     <Button
-      variant={'ghost'}
+      variant={"ghost"}
       className="rounded-full bg-muted p-3"
-      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
-      <LuMoonStar className="dark:hidden w-4 h-4" />
-      <FaSun className="dark:block hidden w-4 h-4" />
+      <LuMoonStar className="h-4 w-4 dark:hidden" />
+      <FaSun className="hidden h-4 w-4 dark:block" />
     </Button>
   );
 };
