@@ -22,6 +22,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useToast } from "@/components/ui/use-toast";
 
 import DatePicker from "@/components/rides_form/DateTimePicker";
 
@@ -36,6 +37,7 @@ const rideSchema = z.object({
 
 const AddRideCard = () => {
   const router = useRouter();
+  const { toast } = useToast();
   const { getToken } = useAuth();
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [isSubmiting, startSubmiting] = useTransition();
@@ -47,13 +49,27 @@ const AddRideCard = () => {
   const onSubmit = (values: z.infer<typeof rideSchema>) => {
     const submit = async () => {
       const token = await getToken();
-      await axios.post("http://localhost:5103/api/rides/", values, {
-        headers: {
-          Authorization: "Bearer " + token,
-          "Content-Type": "application/json",
-        },
-      });
-      router.push("/");
+      await axios
+        .post("http://localhost:5103/api/rides/", values, {
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
+          },
+        })
+        .then(() => {
+          toast({
+            title: "Ride added",
+            description: "Your ride has been listed successfully",
+          });
+          router.push("/");
+        })
+        .catch((error) => {
+          toast({
+            title: "Error",
+            description: error.response.data.message,
+            variant: "destructive",
+          });
+        });
     };
     startSubmiting(() => {
       submit();
