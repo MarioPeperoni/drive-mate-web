@@ -17,7 +17,7 @@ const Header = () => {
   const handleClick = async () => {
     const token = await getToken();
     const response = await axios
-      .put("http://localhost:5103/api/rides/1", "", {
+      .put("https://localhost:57407/api/rides/2", "", {
         headers: {
           Authorization: "Bearer " + token,
           "Content-Type": "application/json",
@@ -33,7 +33,8 @@ const Header = () => {
       <div className="flex gap-5">
         <ThemeToggle />
         <ProfileButton />
-        <Button onClick={() => handleClick()}>Share your ride</Button>
+        <Link href={'/create'}><Button onClick={() => handleClick()} >Share your ride</Button></Link>
+        
       </div>
     </div>
   );

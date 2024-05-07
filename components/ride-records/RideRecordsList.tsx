@@ -28,12 +28,12 @@ export function CardRecordsList() {
       if (searchParams.has("from") && searchParams.has("to")) {
         await axios
           .get(
-            `http://localhost:5103/api/rides/search?from=${searchParams.get("from")}&to=${searchParams.get("to")}&startDate=${searchParams.get("startDate")}`,
+            `https://localhost:57407/api/rides/search?from=${searchParams.get("from")}&to=${searchParams.get("to")}&startDate=${searchParams.get("startDate")}`,
           )
           .then((res) => setRides(res.data));
       } else {
         await axios
-          .get("http://localhost:5103/api/rides")
+          .get("https://localhost:57407/api/rides")
           .then((res) => setRides(res.data));
       }
     };
