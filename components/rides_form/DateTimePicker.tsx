@@ -1,9 +1,9 @@
 "use client";
- 
+
 import * as React from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
- 
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -12,36 +12,45 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { TimePickerDemo } from "./TimePicker";
- 
-export function DateTimePicker() {
-  const [date, setDate] = React.useState<Date>();
- 
+import { TimePickerDemo } from "@/components/rides_form/TimePicker";
+
+const DatePicker = ({ field }: { field: any }) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
           className={cn(
-            "w-[280px] justify-start text-left font-normal mt-2",
-            !date && "text-muted-foreground"
+            "mt-2 w-full justify-start text-left font-normal",
+            !field.value && "text-muted-foreground",
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4 " />
-          {date ? format(date, "PPP HH:mm") : <span>Pick a date</span>}
+          {field.value ? (
+            format(field.value, "PPP HH:mm")
+          ) : (
+            <span>Pick a date</span>
+          )}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
         <Calendar
           mode="single"
-          selected={date}
-          onSelect={setDate}
+          selected={field.value}
+          onSelect={field.onChange}
           initialFocus
+          disabled={(date) =>
+            // @ts-ignore
+            date < new Date().setHours(0, 0, 0, 0) ||
+            date < new Date("1900-01-01")
+          }
         />
-        <div className="p-3 border-t border-border">
-          <TimePickerDemo setDate={setDate} date={date} />
+        <div className="border-t border-border p-3">
+          <TimePickerDemo setDate={field.onChange} date={field.value} />
         </div>
       </PopoverContent>
     </Popover>
   );
-}
+};
+
+export default DatePicker;
