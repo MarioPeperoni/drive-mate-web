@@ -34,7 +34,10 @@ const SearchCard = () => {
 
   const onSubmit = (values: z.infer<typeof searchSchema>) => {
     const { from, to, startDate } = values;
-    const formattedStartDate = startDate.toISOString();
+    startDate.setDate(startDate.getDate() + 1);
+    let formattedStartDate = startDate.toISOString();
+    // Set to midnight of the selected date
+    formattedStartDate = formattedStartDate.slice(0, 10) + "T00:00:00Z";
     router.push(`/?from=${from}&to=${to}&startDate=${formattedStartDate}`);
   };
 
