@@ -9,6 +9,7 @@ import { toast } from "@/components/ui/use-toast";
 import { Skeleton } from "@/components/ui/skeleton";
 
 import { FaBolt, FaTrash } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 
 interface ReservationElementProps {
   ride: Ride;
@@ -17,6 +18,7 @@ interface ReservationElementProps {
 const ReservaionButton = ({ ride }: ReservationElementProps) => {
   const { getToken } = useAuth();
   const user = useUser();
+  const router = useRouter();
 
   const onReserve = async () => {
     const token = await getToken();
@@ -36,6 +38,8 @@ const ReservaionButton = ({ ride }: ReservationElementProps) => {
           title: "Ride reserved!",
           description: "You have successfully reserved your seat",
         });
+        router.push("/profile");
+        router.refresh();
       })
       .catch((error: AxiosError) => {
         toast({
@@ -61,6 +65,8 @@ const ReservaionButton = ({ ride }: ReservationElementProps) => {
           title: "Ride removed!",
           description: "You have successfully removed your listing",
         });
+        router.push("/profile");
+        router.refresh();
       })
       .catch((error: AxiosError) => {
         toast({
