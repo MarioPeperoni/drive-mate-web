@@ -47,7 +47,9 @@ const ProfileButton = () => {
       <DropdownMenuContent>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem asChild className="hover:cursor-pointer">
+          <Link href={"/profile"}>Profile</Link>
+        </DropdownMenuItem>
         <DropdownMenuItem asChild className="hover:cursor-pointer">
           <Link href={"/settings"}>Settings</Link>
         </DropdownMenuItem>
