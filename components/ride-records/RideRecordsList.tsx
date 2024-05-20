@@ -30,15 +30,16 @@ export function CardRecordsList() {
           .get(
             `http://localhost:5103/api/rides/search?from=${searchParams.get("from")}&to=${searchParams.get("to")}&startDate=${searchParams.get("startDate")}`,
           )
-          .then((res) => setRides(res.data));
+          .then((res) => setRides(res.data))
+          .then(() => setIsFetching(false));
       } else {
         await axios
           .get("http://localhost:5103/api/rides")
-          .then((res) => setRides(res.data));
+          .then((res) => setRides(res.data))
+          .then(() => setIsFetching(false));
       }
     };
     fetchData();
-    setIsFetching(false);
   }, [searchParams]);
 
   return (
