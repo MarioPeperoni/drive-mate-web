@@ -43,7 +43,7 @@ export function CardRecordsList() {
   }, [searchParams]);
 
   return (
-    <div className="mt-5 space-y-3">
+    <div className="mt-5 space-y-3" data-testid={"ride-records-list"}>
       {isFetching ? (
         <CardRecordsListLoading />
       ) : rides.length === 0 ? (

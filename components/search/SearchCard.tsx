@@ -42,38 +42,40 @@ const SearchCard = () => {
   };
 
   return (
-    <Card className="mx-auto mt-5 w-[95%] sm:w-[90%]">
-      <CardContent className="!p-3">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-2">
-            <FormField
-              control={form.control}
-              name="from"
-              render={({ field }) => (
-                <FormItem className="flex-1">
-                  <Input placeholder="I'm starting from..." {...field} />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="to"
-              render={({ field }) => (
-                <FormItem className="flex-1">
-                  <Input placeholder="I'm going to..." {...field} />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="startDate"
-              render={({ field }) => <DatePicker field={field} />}
-            />
-            <Button type="submit">Search</Button>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+    <section data-testid={"search-card"}>
+      <Card className="mx-auto mt-5 w-[95%] sm:w-[90%]">
+        <CardContent className="!p-3">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-2">
+              <FormField
+                control={form.control}
+                name="from"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <Input placeholder="I'm starting from..." {...field} />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="to"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <Input placeholder="I'm going to..." {...field} />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="startDate"
+                render={({ field }) => <DatePicker field={field} />}
+              />
+              <Button type="submit">Search</Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
+    </section>
   );
 };
 
