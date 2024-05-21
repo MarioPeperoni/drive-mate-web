@@ -56,7 +56,7 @@ const ReservationTitle = ({ ride }: ReservationElementProps) => {
               <span className="tex-sm -mt-1 flex items-center gap-1 font-light text-muted-foreground ">
                 <FaCarSide />
                 <span className="">
-                  Rides completed:{" "}
+                  Rides:{" "}
                   <span className=" font-bold">
                     {ride.driver.ridesAsDriver.length}
                   </span>
