@@ -68,7 +68,9 @@ const SearchCard = () => {
               <FormField
                 control={form.control}
                 name="startDate"
-                render={({ field }) => <DatePicker field={field} />}
+                render={({ field }) => (
+                  <DatePicker field={field} data-testid={"date-picker"} />
+                )}
               />
               <Button type="submit">Search</Button>
             </form>
